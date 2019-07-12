@@ -1,0 +1,8 @@
+#product,tr,td,th{
+    border:solid;
+    margin:auto;
+}
+img{
+    width: 50px;
+    margin:2px;
+}

@@ -1,0 +1,44 @@
+<div><h1>Product</h1></div>
+
+<div >
+{{product | json}}
+
+</div>
+<button (click)="toggleImage()"> toggle</button>
+
+<input [(ngModel)] ="searchString" (keyup)="getProducts()">
+
+<h3>{{searchString}}</h3>
+Product Name: 
+<input type="text" [(ngModel)] ="name" >
+<button (click)="addProduct()">Add new product</button>
+
+<table id="product" *ngIf="products && products.length ; else noProduct">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Code</th>
+            <th>Available</th>
+            <th>Price</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products" >
+            <td><img *ngIf='isVisible'
+                [src]='product.imageUrl'></td>
+            <td>{{product.productName}}</td>
+            <td>{{product.productCode}}</td>
+            <td>{{product.releaseDate}}</td>
+            <td>{{product.price | currency:'PHP': 'symbol': '1.2-2' }}</td>
+            <td>{{product.starRating}}</td>
+        </tr>
+    </tbody>
+
+</table>
+
+
+<ng-template #noProduct>
+    No product available
+</ng-template>
